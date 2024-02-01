@@ -1,9 +1,12 @@
 from openai import OpenAI
 import streamlit as st
+from PIL import Image
 
+img = Image.open("./data/Chikku.jpg")
 
-st.image("./data/Chikku.jpg")
+st.image(img)
 st.title('Welcome To Chikkupedia')
+st.balloons()
 
 client = OpenAI(api_key=st.secrets["OPEN_API_KEY"])
 
