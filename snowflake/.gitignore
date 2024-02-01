@@ -1,0 +1,14 @@
+dist/
+build/
+venv/
+
+*.log
+*.exe
+*.spec
+*.conf
+
+**/lib/
+**/__pycache__
+**/node_modules
+**/.streamlit
+**/package-lock.json
