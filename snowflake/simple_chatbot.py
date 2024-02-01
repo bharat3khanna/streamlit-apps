@@ -2,7 +2,7 @@ from openai import OpenAI
 import streamlit as st
 from PIL import Image
 
-img = Image.open("./data/Chikku.jpg")
+img = Image.open("https://streamlit-bkhanna.s3.amazonaws.com/Chikku.jpg")
 
 st.image(img)
 st.title('Welcome To Chikkupedia')
