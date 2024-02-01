@@ -2,7 +2,7 @@ from openai import OpenAI
 import streamlit as st
 
 
-st.image('Chikku.jpg')
+st.image('./Chikku.jpg')
 st.title('Welcome To Chikkupedia')
 
 client = OpenAI(api_key=st.secrets["OPEN_API_KEY"])
