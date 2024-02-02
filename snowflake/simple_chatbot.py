@@ -18,7 +18,7 @@ client = OpenAI(api_key=st.secrets["OPEN_API_KEY"])
 
 #Initialize the chat history
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{'role':'assistant','content':'Ask me anything?'}]
+    st.session_state.messages = [{'role':'assistant','content':'Ask me anything? (Puch ki Puchna tu Mainu)'}]
 
 #prompt user for messages
 if prompt := st.chat_input():
