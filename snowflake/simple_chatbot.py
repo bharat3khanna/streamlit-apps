@@ -3,7 +3,7 @@ import streamlit as st
 from PIL import Image
 import os
 
-img = Image.open("./data/Chikku.jpg")
+#img = Image.open("./data/Chikku.jpg")
 
 #st.image(img)
 st.title('Welcome To Chikkupedia')
