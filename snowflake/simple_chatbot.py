@@ -1,13 +1,14 @@
 from openai import OpenAI
 import streamlit as st
 from PIL import Image
+import os
 
 img = Image.open("./data/Chikku.jpg")
 
-st.image(img)
+#st.image(img)
 st.title('Welcome To Chikkupedia')
 st.balloons()
-
+st.write(os.getcwd())
 client = OpenAI(api_key=st.secrets["OPEN_API_KEY"])
 
 #Initialize the chat history
