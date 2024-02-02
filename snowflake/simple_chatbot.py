@@ -4,7 +4,7 @@ from PIL import Image
 import os
 
 #img = Image.open("./data/Chikku.jpg")
-path = '/snowflake/data/Chikku.jpg'
+path = 'snowflake/data'
 abspath = os.path.join(os.getcwd(),path)
 #img = Image.open(abspath)
 
@@ -13,6 +13,9 @@ st.title('Welcome To Chikkupedia')
 st.balloons()
 st.write(os.getcwd())
 st.write(os.path.join(os.getcwd(),path))
+if not os.path.exists(abspath):
+    st.write("Path of the file is Invalid")
+
 client = OpenAI(api_key=st.secrets["OPEN_API_KEY"])
 
 #Initialize the chat history
