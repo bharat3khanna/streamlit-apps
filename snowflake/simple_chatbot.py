@@ -11,8 +11,6 @@ img = Image.open(abspath)
 st.image(img)
 st.title('Welcome To Chikkupedia')
 st.balloons()
-st.write(os.getcwd())
-st.write(os.path.join(os.getcwd(),path))
 if not os.path.exists(abspath):
     st.write("Path of the file is Invalid")
 
