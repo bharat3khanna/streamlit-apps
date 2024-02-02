@@ -11,6 +11,7 @@ abspath = os.path.join(os.getcwd(),path)
 #st.image(img)
 st.title('Welcome To Chikkupedia')
 st.balloons()
+st.write(os.getcwd())
 st.write(os.path.join(os.getcwd(),path))
 client = OpenAI(api_key=st.secrets["OPEN_API_KEY"])
 
