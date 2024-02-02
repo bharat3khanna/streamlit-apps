@@ -4,11 +4,11 @@ from PIL import Image
 import os
 
 #img = Image.open("./data/Chikku.jpg")
-path = 'snowflake/data'
+path = 'snowflake/data/Chikku.jpg'
 abspath = os.path.join(os.getcwd(),path)
-#img = Image.open(abspath)
+img = Image.open(abspath)
 
-#st.image(img)
+st.image(img)
 st.title('Welcome To Chikkupedia')
 st.balloons()
 st.write(os.getcwd())
