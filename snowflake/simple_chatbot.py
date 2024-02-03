@@ -11,6 +11,7 @@ img = Image.open(abspath)
 st.image(img)
 st.title('Welcome To Chikkupedia')
 st.balloons()
+st.snow()
 if not os.path.exists(abspath):
     st.write("Path of the file is Invalid")
 
