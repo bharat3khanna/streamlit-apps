@@ -1,3 +1,5 @@
 openai
 pillow
-plotly
+plotly.
+snowflake-connector-python
+snowflake-snowpark-python
