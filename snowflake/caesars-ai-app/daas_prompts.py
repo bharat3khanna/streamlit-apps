@@ -1,12 +1,19 @@
 import streamlit as st
 
 SCHEMA_PATH = st.secrets.get("SCHEMA_PATH", "DAAS_DEV.DAAS_CORE")
-QUALIFIED_TABLE_NAME = f"{SCHEMA_PATH}.GAME_DAY_SUMMARY_FACT"
-TABLE_DESCRIPTION = """
+QUALIFIED_TABLE_NAME_1 = f"{SCHEMA_PATH}.GAME_DAY_SUMMARY_FACT"
+TABLE_DESCRIPTION_1 = """
 This table has various metrics for slot machines with game dates of Decemeber 2023. This data is used to calculate
 how much machine has earned for the Caesars properties, such as Coin In Amount tells you how much amount was inserted in the machine
 and handle pulls tells you how many handle was pulled for each machine in specific Caesars property using property code
 that signifies an Caesars Property and machine nbr fields talks about the machine details.
+
+"""
+
+QUALIFIED_TABLE_NAME_2 = f"{SCHEMA_PATH}.MACHINE_DIM"
+TABLE_DESCRIPTION_2 = """
+This table has various details of machines such as machine number, machine status, machine type and property code. Join this table
+with game day summary fact table to get the metrics related to machines.
 """
 # This query is optional if running Frosty on your own table, especially a wide table.
 # Since this is a deep table, it's useful to tell Frosty what variables are available.
@@ -68,7 +75,8 @@ def get_table_context(table_name: str, table_description: str, metadata_query: s
     context = f"""
 Here is the table name <tableName> {'.'.join(table)} </tableName>
 
-<tableDescription>{table_description}</tableDescription>
+<tableDescription>{table_description_1}</tableDescription>
+<tableDescription>{table_description_2}</tableDescription>
 
 Here are the columns of the {'.'.join(table)}
 
