@@ -97,7 +97,7 @@ Here are the columns of the {'.'.join(table)}
 def get_system_prompt():
     table_contexts = ''
     for tab in tables:
-        table_name = f'QUALIFIED_TABLE_NAME_{tab}'
+        table_name = f'DAAS_DEV.DAAS_CORE.{tab}'
         table_description=f'TABLE_DESCRIPTION_{tab}'
         print(f'Getting context for {table_name}')
         table_context = get_table_context(
