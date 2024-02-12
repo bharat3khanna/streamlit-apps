@@ -100,9 +100,10 @@ def get_system_prompt():
             table_name=f'QUALIFIED_TABLE_NAME_{tab}',
             table_description=f'TABLE_DESCRIPTION_{tab}',
             metadata_query=METADATA_QUERY
+    
+        )
         table_contexts += table_context
-    )
-    return GEN_SQL.format(context=table_contexts)
+    return GEN_SQL.format(context=table_context)
 
 # do `streamlit run prompts.py` to view the initial system prompt in a Streamlit app
 if __name__ == "__main__":
