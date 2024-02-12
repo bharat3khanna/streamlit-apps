@@ -1,7 +1,7 @@
 import streamlit as st
 
 SCHEMA_PATH = st.secrets.get("SCHEMA_PATH", "DAAS_DEV.DAAS_CORE")
-QUALIFIED_TABLE_NAME_1 = f"{SCHEMA_PATH}.GAME_DAY_SUMMARY_FACT"
+QUALIFIED_TABLE_NAME_GAME_DAY_SUMMARY_FACT = f"{SCHEMA_PATH}.GAME_DAY_SUMMARY_FACT"
 TABLE_DESCRIPTION_1 = """
 This table has various metrics for slot machines with game dates of Decemeber 2023. This data is used to calculate
 how much machine has earned for the Caesars properties, such as Coin In Amount tells you how much amount was inserted in the machine
@@ -10,15 +10,14 @@ that signifies an Caesars Property and machine nbr fields talks about the machin
 
 """
 
-QUALIFIED_TABLE_NAME_2 = f"{SCHEMA_PATH}.MACHINE_DIM"
-TABLE_DESCRIPTION_2 = """
+tables = ['GAME_DAY_SUMMARY_FACT', 'MACHINE_DIM']
+
+QUALIFIED_TABLE_NAME_MACHINE_DIM = f"{SCHEMA_PATH}.MACHINE_DIM"
+TABLE_DESCRIPTION_MACHINE_DIM = """
 This table has various details of machines such as machine number, machine status, machine type and property code. Join this table
 with game day summary fact table to get the metrics related to machines.
 """
-# This query is optional if running Frosty on your own table, especially a wide table.
-# Since this is a deep table, it's useful to tell Frosty what variables are available.
-# Similarly, if you have a table with semi-structured data (like JSON), it could be used to provide hints on available keys.
-# If altering, you may also need to modify the formatting logic in get_table_context() below.
+
 METADATA_QUERY = f"SELECT VARIABLE_NAME, DEFINITION FROM {SCHEMA_PATH}.MACHINE_FINANCIAL_ENTITY_ATTRIBUTES;"
 
 GEN_SQL = """
@@ -94,12 +93,16 @@ Here are the columns of the {'.'.join(table)}
     return context
 
 def get_system_prompt():
-    table_context = get_table_context(
-        table_name=QUALIFIED_TABLE_NAME_1,
-        table_description=TABLE_DESCRIPTION_2,
-        metadata_query=METADATA_QUERY
+    table_contexts = ''
+    for tab in tables:
+
+        table_context = get_table_context(
+            table_name=f'QUALIFIED_TABLE_NAME_{tab}',
+            table_description=f'TABLE_DESCRIPTION_{tab}',
+            metadata_query=METADATA_QUERY
+        table_contexts += table_context
     )
-    return GEN_SQL.format(context=table_context)
+    return GEN_SQL.format(context=table_contexts)
 
 # do `streamlit run prompts.py` to view the initial system prompt in a Streamlit app
 if __name__ == "__main__":
