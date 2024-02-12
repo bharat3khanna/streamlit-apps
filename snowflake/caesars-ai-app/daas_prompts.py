@@ -2,7 +2,7 @@ import streamlit as st
 
 SCHEMA_PATH = st.secrets.get("SCHEMA_PATH", "DAAS_DEV.DAAS_CORE")
 QUALIFIED_TABLE_NAME_GAME_DAY_SUMMARY_FACT = f"{SCHEMA_PATH}.GAME_DAY_SUMMARY_FACT"
-TABLE_DESCRIPTION_1 = """
+TABLE_DESCRIPTION_GAME_DAY_SUMMARY_FACT = """
 This table has various metrics for slot machines with game dates of Decemeber 2023. This data is used to calculate
 how much machine has earned for the Caesars properties, such as Coin In Amount tells you how much amount was inserted in the machine
 and handle pulls tells you how many handle was pulled for each machine in specific Caesars property using property code
@@ -58,6 +58,7 @@ Then provide 3 example questions using bullet points.
 
 @st.cache_data(show_spinner="Loading Caesars.AI's context...")
 def get_table_context(table_name: str, table_description: str, metadata_query: str = None):
+    print(f'Running context for {table_name}')
     table = table_name.split(".")
     conn = st.connection("snowflake")
     columns = conn.query(f"""
@@ -74,8 +75,8 @@ def get_table_context(table_name: str, table_description: str, metadata_query: s
     context = f"""
 Here is the table name <tableName> {'.'.join(table)} </tableName>
 
-<tableDescription>{TABLE_DESCRIPTION_1}</tableDescription>
-<tableDescription>{TABLE_DESCRIPTION_2}</tableDescription>
+<tableDescription>{TABLE_DESCRIPTION_GAME_DAY_SUMMARY_FACT}</tableDescription>
+<tableDescription>{TABLE_DESCRIPTION_MACHINE_DIM}</tableDescription>
 
 Here are the columns of the {'.'.join(table)}
 
