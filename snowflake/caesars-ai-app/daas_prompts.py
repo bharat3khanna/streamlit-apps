@@ -10,7 +10,7 @@ that signifies an Caesars Property and machine nbr fields talks about the machin
 
 """
 
-tables = ['GAME_DAY_SUMMARY_FACT', 'MACHINE_DIM']
+tables = ['GAME_DAY_SUMMARY_FACT']
 
 QUALIFIED_TABLE_NAME_MACHINE_DIM = f"{SCHEMA_PATH}.MACHINE_DIM"
 TABLE_DESCRIPTION_MACHINE_DIM = """
