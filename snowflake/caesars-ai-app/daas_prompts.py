@@ -75,8 +75,8 @@ def get_table_context(table_name: str, table_description: str, metadata_query: s
     context = f"""
 Here is the table name <tableName> {'.'.join(table)} </tableName>
 
-<tableDescription>{table_description_1}</tableDescription>
-<tableDescription>{table_description_2}</tableDescription>
+<tableDescription>{TABLE_DESCRIPTION_1}</tableDescription>
+<tableDescription>{TABLE_DESCRIPTION_2}</tableDescription>
 
 Here are the columns of the {'.'.join(table)}
 
@@ -95,8 +95,8 @@ Here are the columns of the {'.'.join(table)}
 
 def get_system_prompt():
     table_context = get_table_context(
-        table_name=QUALIFIED_TABLE_NAME,
-        table_description=TABLE_DESCRIPTION,
+        table_name=QUALIFIED_TABLE_NAME_1,
+        table_description=TABLE_DESCRIPTION_2,
         metadata_query=METADATA_QUERY
     )
     return GEN_SQL.format(context=table_context)
