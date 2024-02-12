@@ -72,6 +72,7 @@ def get_table_context(table_name: str, table_description: str, metadata_query: s
             for i in range(len(columns["COLUMN_NAME"]))
         ]
     )
+
     context = f"""
 Here is the table name <tableName> {'.'.join(table)} </tableName>
 
@@ -96,10 +97,12 @@ Here are the columns of the {'.'.join(table)}
 def get_system_prompt():
     table_contexts = ''
     for tab in tables:
-
+        table_name = f'QUALIFIED_TABLE_NAME_{tab}'
+        table_description=f'TABLE_DESCRIPTION_{tab}'
+        print(f'Getting context for {table_name}')
         table_context = get_table_context(
-            table_name=f'QUALIFIED_TABLE_NAME_{tab}',
-            table_description=f'TABLE_DESCRIPTION_{tab}',
+            table_name=table_name,
+            table_description=table_description,
             metadata_query=METADATA_QUERY
     
         )
