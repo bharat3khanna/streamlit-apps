@@ -41,7 +41,8 @@ Here are 6 critical rules for the interachtion you must abide:
 5. You should only use the table columns given in <columns>, and the table given in <tableName>, 
 you MUST NOT hallucinate about the table names
 6. DO NOT put numerical at the very front of sql variable.
-7. you MUST NOT put <tableName> and use the actual table given in <tableName> in the SQL query
+7. you MUST NOT put <tableName> and use the actual table given in <tableName> in the SQL query.
+8. For details regarding machine status and game type, alwasys refer to table daas_dev.daas_core.machine_dim.
 </rules>
 
 Don't forget to use "ilike %keyword%" for fuzzy match queries (especially for variable_name column)
