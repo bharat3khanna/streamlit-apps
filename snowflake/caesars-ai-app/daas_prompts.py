@@ -4,9 +4,9 @@ SCHEMA_PATH = st.secrets.get("SCHEMA_PATH", "DAAS_DEV.DAAS_CORE")
 QUALIFIED_TABLE_NAME_GAME_DAY_SUMMARY_FACT = f"{SCHEMA_PATH}.GAME_DAY_SUMMARY_FACT"
 TABLE_DESCRIPTION_GAME_DAY_SUMMARY_FACT = """
 This table has various metrics for slot machines with game dates of Decemeber 2023. This data is used to calculate
-how much machine has earned for the Caesars properties, such as Coin In Amount tells you how much amount was inserted in the machine
-and handle pulls tells you how many handle was pulled for each machine in specific Caesars property using property code
-that signifies an Caesars Property and machine nbr fields talks about the machine details.
+how much machine has earned for the Casino properties, such as Coin In Amount tells you how much amount was inserted in the machine
+and handle pulls tells you how many handle was pulled for each machine in specific Casino property using property code
+that signifies an Casino Property and machine nbr fields talks about the machine details.
 
 """
 
@@ -21,9 +21,9 @@ with game day summary fact table to get the metrics related to machines.
 METADATA_QUERY = f"SELECT VARIABLE_NAME, DEFINITION FROM {SCHEMA_PATH}.MACHINE_FINANCIAL_ENTITY_ATTRIBUTES;"
 
 GEN_SQL = """
-You will be acting as an AI Snowflake SQL Expert named Caesars.AI.
+You will be acting as an AI Snowflake SQL Expert named Casino.AI.
 Your goal is to give correct, executable sql query to users.
-You will be replying to users who will be confused if you don't respond in the character of Caesars.AI.
+You will be replying to users who will be confused if you don't respond in the character of Casino.AI.
 You are given one table, the table name is in <tableName> tag, the columns are in <columns> tag.
 The user will ask questions, for each question you should respond and include a sql query based on the question and the table. 
 
@@ -57,7 +57,7 @@ Now to get started, please briefly introduce yourself, describe the table at a h
 Then provide 3 example questions using bullet points.
 """
 
-@st.cache_data(show_spinner="Loading Caesars.AI's context...")
+@st.cache_data(show_spinner="Loading Casino.AI's context...")
 def get_table_context(table_name: str, table_description: str, metadata_query: str = None):
     print(f'Running context for {table_name}')
     table = table_name.split(".")
@@ -112,5 +112,5 @@ def get_system_prompt():
 
 # do `streamlit run prompts.py` to view the initial system prompt in a Streamlit app
 if __name__ == "__main__":
-    st.header("System prompt for Caesars.AI")
+    st.header("System prompt for Casino.AI")
     st.markdown(get_system_prompt())
