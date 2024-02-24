@@ -42,7 +42,7 @@ def create_plotly_pie_chart(df,x,y):
 
 #Program Starts Here
 
-st.title("Welcome to Caesars.AI")
+st.title("Welcome to Casino.AI")
 
 # Initialize the chat messages history
 client = OpenAI(api_key=st.secrets.OPEN_API_KEY)
