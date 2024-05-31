@@ -2,10 +2,10 @@ import streamlit as st
 import boto3
 import gc
 import base64
-from dotenv import load_dotenv, find_dotenv
+#from dotenv import load_dotenv, find_dotenv
 from botocore.exceptions import NoCredentialsError
-from streamlit_pdf_viewer import pdf_viewer
-from requests_aws4auth import AWS4Auth
+#from streamlit_pdf_viewer import pdf_viewer
+#from requests_aws4auth import AWS4Auth
 from langchain.embeddings import BedrockEmbeddings
 from langchain.llms.bedrock import Bedrock
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -19,7 +19,7 @@ from langchain.prompts import PromptTemplate, ChatPromptTemplate, HumanMessagePr
 
 
 #load environment variables
-load_dotenv(find_dotenv())
+#load_dotenv(find_dotenv())
 
 access_key = st.secrets["AWS_ACCESS_KEY_ID"]
 secret_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
