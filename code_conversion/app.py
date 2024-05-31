@@ -142,8 +142,7 @@ def main():
 if __name__ == "__main__":
     st.title("""SSIS To Snowflake Code Convertor \n
           By Bharat Khanna""")
-    st.write("""Hello, I am an AI assistant to help on the conversion of SSIS Packages to Snowflake Compatible SQL
-             be more productive. 
+    st.write("""Hello, I am an AI assistant to help on the conversion of SSIS Packages to Snowflake Compatible SQL. 
              I am built on Amazon Bedrock
              To get started, please upload an XML file, and click on Process File. I will convert it to Snowflake compatible SQL.
              Press the Clear Form Button to start over.
