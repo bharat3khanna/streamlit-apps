@@ -22,18 +22,18 @@ config = Config(
 )
 
 #load environment variables
-load_dotenv(find_dotenv())
+#load_dotenv(find_dotenv())
 
-# access_key = st.secrets["AWS_ACCESS_KEY_ID"]
-# secret_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
-# # bucket_name = st.secrets["AWS_BUCKET_NAME"]
-# region = st.secrets["AWS_DEFAULT_REGION"]
+access_key = st.secrets["AWS_ACCESS_KEY_ID"]
+secret_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
+bucket_name = st.secrets["AWS_BUCKET_NAME"]
+region = st.secrets["AWS_DEFAULT_REGION"]
 # container_pdf, container_chat = st.columns([50, 50])
 
-# session = boto3.Session(aws_access_key_id=access_key,
-                    #   aws_secret_access_key=secret_key, region_name=region)
+session = boto3.Session(aws_access_key_id=access_key,
+                    aws_secret_access_key=secret_key, region_name=region)
 
-session = boto3.Session(profile_name='dev')
+#session = boto3.Session(profile_name='dev')
 bedrock_client = session.client('bedrock-runtime',region_name='us-east-1',config=config)
 identity = session.client('sts').get_caller_identity()['Arn']
 credentials = session.get_credentials()
